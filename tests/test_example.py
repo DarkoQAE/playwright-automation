@@ -17,9 +17,9 @@ def test_example(browser):
 
     try:
         with allure.step("Verify Page Title"):
-            assert "Wrong Title" in page.title()  # Intentional failure
+            assert "Example Domain" in page.title()  # Correct title
     except AssertionError:
         screenshot_path = "allure-results/screenshot.png"
-        browser.screenshot(path=screenshot_path)  # Capture screenshot
-        allure.attach.file(screenshot_path, name="Failure Screenshot", attachment_type=allure.attachment_type.PNG)
-        raise  # Re-raise the assertion error
+        page.screenshot(path=screenshot_path)  # Use page.screenshot(), not browser.screenshot()
+        allure.attach.file(screenshot_path, name="screenshot", attachment_type=allure.attachment_type.PNG)
+        raise  # Re-raise the error so pytest marks it as failed
