@@ -37,3 +37,5 @@ jobs:
         with:
           name: allure-results
           path: allure-results
+      - name: Install Dependencies
+        run: pip install pytest playwright requests allure-pytest
