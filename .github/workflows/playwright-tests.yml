@@ -20,12 +20,14 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
-          playwright install
+          playwright install --with-deps  # Ensure all dependencies are installed
 
-      - name: Run Playwright UI Tests
+      - name: Run Playwright UI Tests (Headless Mode)
         run: |
           source venv/bin/activate
           pytest tests/test_example.py --alluredir=allure-results
+        env:
+          PLAYWRIGHT_HEADLESS: "1"  # Ensures Playwright runs in headless mode
 
       - name: Run API Tests
         run: |
@@ -37,5 +39,3 @@ jobs:
         with:
           name: allure-results
           path: allure-results
-      - name: Install Dependencies
-        run: pip install pytest playwright requests allure-pytest
