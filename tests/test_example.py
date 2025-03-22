@@ -11,8 +11,9 @@ def browser():
 
 
 def test_example(browser):
+    page = browser.new_page()  # Open a new page
     with allure.step("Open Example.com"):
-        browser.goto("https://example.com")
+        page.goto("https://example.com")
 
     try:
         with allure.step("Verify Page Title"):
