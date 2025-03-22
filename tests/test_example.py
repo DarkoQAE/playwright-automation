@@ -17,7 +17,7 @@ def test_example(browser):
 
     try:
         with allure.step("Verify Page Title"):
-            assert "Wrong Title" in browser.title()  # Intentional failure
+            assert "Wrong Title" in page.title()  # Intentional failure
     except AssertionError:
         screenshot_path = "allure-results/screenshot.png"
         browser.screenshot(path=screenshot_path)  # Capture screenshot
