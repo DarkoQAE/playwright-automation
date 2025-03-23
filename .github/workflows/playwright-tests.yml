@@ -25,14 +25,14 @@ jobs:
       - name: Run Playwright UI Tests (Headless Mode)
         run: |
           source venv/bin/activate
-          pytest tests/test_example.py --alluredir=allure-results
+          pytest tests/ui/test_login.py --alluredir=allure-results
         env:
           PLAYWRIGHT_HEADLESS: "1"  # Ensures Playwright runs in headless mode
 
       - name: Run API Tests
         run: |
           source venv/bin/activate
-          pytest tests/test_api.py --alluredir=allure-results
+          pytest tests/ui/test_api.py --alluredir=allure-results
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
